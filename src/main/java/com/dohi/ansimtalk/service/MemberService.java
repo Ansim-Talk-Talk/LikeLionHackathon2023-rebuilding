@@ -2,7 +2,6 @@ package com.dohi.ansimtalk.service;
 
 
 import com.dohi.ansimtalk.domain.Member;
-import com.dohi.ansimtalk.exception.NotEnoughStockException;
 import com.dohi.ansimtalk.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -83,7 +82,7 @@ public class MemberService {
            memberRepository.save(bohomember);
             pemember.setPartner(bohoid);
             memberRepository.save(pemember);
-        } catch (NotEnoughStockException e) {
+        } catch (RuntimeException e) {
         }
 
     }
