@@ -15,7 +15,6 @@ public class bohoController {
 
 
     private final MemberService memberService;
-    private final MessageService messageService;
 //BohoCotroller = 해커톤 마감하기 위해 매핑만 급하게 끝낸
     @GetMapping("/members/{id}/log.html")
     public String showMemberloghtml(@PathVariable("id") Long id, Model model) {
