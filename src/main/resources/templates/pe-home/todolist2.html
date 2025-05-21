@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/pe-home/todolist2.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/pe-home/yeslog.svg" alt="Left Margin Image" />
+      </div>
+      <div class="top">
+        <div class="send">
+          <span th:text="${member.name}"></span>님의 일정이에요
+          <img src="/svg/pe-home/4.svg" alt="이모티콘" class="image" />
+          <img
+            src="/svg/pe-home/X.svg"
+            alt="뒤로가기"
+            class="cancle"
+            onclick="goToModePage()"
+          />
+        </div>
+
+        <div class="todo">2023년 8월 20일 (토)</div>
+
+        <div class="task-box">
+          <div class="content">
+            ⦁ 고혈압 약 (아침, 점심, 저녁) 식사 후<br />&nbsp;&nbsp;&nbsp;챙겨먹기
+          </div>
+          <div class="content">⦁ 덕구 밥 잘 챙겨주기</div>
+          <div class="content">⦁ 예주 학교 데리러 가기</div>
+        </div>
+
+        <div class="button">
+          <button onclick="navigateToPage1()" class="back">이전</button>
+          <button onclick="navigateToPage2()" class="next">다음</button>
+        </div>
+      </div>
+
+      <div class="bot">
+        <img src="/svg/pe-home/yeeback.svg" alt="흐린로고" class="down" />
+      </div>
+    </div>
+
+    <script>
+      // 버튼에 마우스가 들어왔을 때의 동작
+      function handleMouseEnter(buttonNumber) {
+        var button = document.getElementById(buttonNumber);
+        button.style.backgroundColor = "#1964F7";
+        button.style.color = "#FFFFFF";
+      }
+
+      // 버튼에서 마우스가 나갔을 때의 동작
+      function handleMouseLeave(buttonNumber) {
+        var button = document.getElementById(buttonNumber);
+        button.style.backgroundColor = "#efefef";
+        button.style.color = "#202020";
+      }
+
+      function goToModePage() {
+        window.location.href = "pe-home-main.html";
+      }
+
+      function navigateToPage1() {
+        window.location.href = "todolist.html";
+      }
+    </script>
+  </body>
+</html>

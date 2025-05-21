@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/pe-home/pe-home.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="top">
+        <div class="top-container">
+          <img
+            src="/svg/pe-home/Group 427320463.svg"
+            alt="이미지"
+            class="image"
+          />
+          <button onclick="navigateToPage2()" class="button-119">119</button>
+          <div class="notice"><span th:text="${member.name}"></span>님,<br />오늘은 해가 뜨거워요.</div>
+          <div class="weather">
+            <img src="/svg/pe-home/sun.svg" alt="이모티콘1" class="imagesun" />
+            <div class="on">
+              체감온도 35°
+              <img
+                src="/svg/pe-home/ondo.svg"
+                alt="이모티콘1"
+                class="imageon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <div class="ment">보호자가 안심할 수 있게 톡톡!</div>
+        <div class="button">
+          <button id="one" onclick="handleButtonClick(1)">
+            메시지 보내기
+            <img src="/svg/pe-home/1.svg" alt="이모티콘1" class="image2" />
+          </button>
+          <button id="two" onclick="handleButtonClick(2)">
+            이모티콘 보내기
+            <img src="/svg/pe-home/2.svg" alt="이모티콘2" class="image3" />
+          </button>
+          <button id="three" onclick="handleButtonClick(3)">
+            알림 확인하기
+            <img src="/svg/pe-home/3.svg" alt="이모티콘3" class="image4" />
+          </button>
+          <button id="four" onclick="handleButtonClick(4)">
+            일정 확인하기
+            <img src="/svg/pe-home/4.svg" alt="이모티콘3" class="image5" />
+          </button>
+        </div>
+        <div class="left-margin-image">
+          <img src="/svg/pe-home/yeslog.svg" alt="Left Margin Image" />
+        </div>
+      </div>
+
+      <div class="bot">
+        <img
+          src="/svg/pe-home/Rectangle 6272 (1).svg"
+          alt="하단바"
+          class="down"
+        />
+        <img
+          src="/svg/pe-home/Group 427320592 (1).svg"
+          alt="알림내역"
+          class="alram"
+          onclick="goToModePage(1)"
+        />
+        <img
+          src="/svg/pe-home/Group 427320591.svg"
+          alt="홈"
+          class="home"
+          onclick="goToModePage(2)"
+        />
+        <img
+          src="/svg/pe-home/Group 427320511.svg"
+          alt="마이페이지"
+          class="mypage"
+          onclick="goToModePage(3)"
+        />
+      </div>
+    </div>
+
+    <script>
+      var notification;
+
+      function showNotification() {
+        // 알림창 생성
+        notification = document.createElement("div");
+
+        // Create the second <img> element for the alarm icon
+        var almIcon = document.createElement("img");
+        almIcon.src = "/svg/pe-home/alrim.svg"; // Replace "path/to/alarm.svg" with the actual path to your alarm SVG file
+        almIcon.classList.add("alm-icon"); // Add a unique class for the alarm icon
+
+        // Create the first <img> element for the bell icon
+        var bellIcon = document.createElement("img");
+        bellIcon.src = "/svg/pe-home/jong.svg"; // Replace "path/to/bell.svg" with the actual path to your bell SVG file
+        bellIcon.classList.add("bell-icon"); // Add a unique class for the bell icon
+        // Create the third <img> element for the content icon
+        var contentIcon = document.createElement("img");
+        contentIcon.src = "/svg/pe-home/gyung.svg"; // Replace "path/to/content.svg" with the actual path to your content SVG file
+        contentIcon.classList.add("content-icon"); // Add a unique class for the content icon
+
+        // Add the images to the notification div
+        notification.appendChild(almIcon);
+        notification.appendChild(bellIcon);
+        notification.appendChild(contentIcon);
+
+        // "notification" 클래스를 추가하여 스타일 적용
+        notification.classList.add("notification");
+
+        // 알림창을 body에 추가
+        document.body.appendChild(notification);
+      }
+
+      // 5초 후에 알림창을 보여줌
+      setTimeout(function () {
+        showNotification();
+
+        // 3초 후에 알림창을 사라지게 함
+        setTimeout(function () {
+          document.body.removeChild(notification);
+        }, 2000);
+      }, 4000);
+
+      function navigateToPage2() {
+        window.location.href = "119.html";
+      }
+
+      // 버튼에 마우스가 들어왔을 때의 동작
+      function handleMouseEnter(buttonNumber) {
+        var button = document.getElementById(buttonNumber);
+        button.style.backgroundColor = "#1964F7";
+        button.style.color = "#FFFFFF";
+      }
+
+      // 버튼에서 마우스가 나갔을 때의 동작
+      function handleMouseLeave(buttonNumber) {
+        var button = document.getElementById(buttonNumber);
+        button.style.backgroundColor = "#efefef";
+        button.style.color = "#202020";
+      }
+
+      // 각 버튼을 클릭했을 때 호출될 함수
+      function handleButtonClick(buttonId) {
+        // 버튼에 따라 다른 동작을 수행하도록 설정
+        switch (buttonId) {
+          case 1:
+            window.location.href = "message.html";
+            break;
+          case 2:
+            window.location.href = "emoticon.html";
+            break;
+          case 3:
+            window.location.href = "log.html";
+            break;
+          case 4:
+            window.location.href = "todolist.html";
+            break;
+        }
+      }
+
+      function goToModePage(modeId) {
+        switch (modeId) {
+          case 1:
+            window.location.href = "log.html";
+            break;
+          case 2:
+            window.location.href = "pe-home-main.html";
+            break;
+          case 3:
+            window.location.href = "mypage.html";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/login/pe-style5.css" />
+  </head>
+
+  <body onload="selectRole()">
+    <div class="container">
+      <div class="div">
+        <img
+          src="/svg/login/vector.svg"
+          alt="등호"
+          class="arrow"
+          onclick="goToModePage()"
+        />
+        <h2 class="select">아래 인증코드를<br/>보호자 모드에 입력해주세요</h2>
+        <div class="name">
+          <p th:text="${member?.code}"></p>
+        </div>
+
+        <div class="next">
+          <h3></h3>
+        </div>
+      </div>
+      <div class="image">
+        <img src="/svg/login/dark.svg" alt="이미지2" class="group2" />
+      </div>
+    </div>
+
+    <script>
+
+      // 5초마다 페이지를 새로 고침하는 함수
+      function autoRefreshPage() {
+        setTimeout(function() {
+          location.reload();
+        }, 5000); // 5초(5000밀리초)마다 새로 고침
+      }
+
+      // 페이지 로드 후 자동 새로 고침 함수 호출
+      window.onload = autoRefreshPage;
+      /*
+      function selectRole(role) {
+      localStorage.setItem('selectedRole', role);
+
+        const currentUrl = window.location.href;
+        const regex = /\/members\/bohocode\/(\d+);
+        const match = currentUrl.match(regex);
+
+        if (match) {
+          const id = match[1];
+          console.log(id); // 추출된 id 출력
+
+
+      setTimeout(function() {
+        //window.location.href = 'peboho6.html';
+        //window.location.reload();
+        window.location.href = '/members/pebohocode/' + id ;
+      }, 5000); // 2초는 2000밀리초를 의미합니다.
+    }
+*/
+      function goToModePage() {
+      //window.location.href = "peboho4.html";
+        window.history.back();
+    }
+    </script>
+  </body>
+</html>

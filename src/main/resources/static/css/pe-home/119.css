@@ -1,0 +1,403 @@
+body {
+  font-family: Pretendard;
+  background-color: #f5f5f5;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  text-align: center;
+  background-color: #b3b3b3;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.left-margin-image {
+  position: absolute;
+  top: 50%;
+  right: 528px;
+  transform: translateY(-50%);
+  padding-left: 200px; /* 왼쪽 여백 추가 */
+}
+
+.top {
+  background-color: #1964f7;
+  color: #ffffff;
+  width: 390px;
+  height: 265px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0 0;
+  filter: brightness(0.7);
+}
+
+.top-container {
+  position: relative;
+}
+
+.image {
+  width: 99px;
+  height: 150px;
+  position: absolute;
+  left: 28px;
+  /* 원하는 위치로 조정합니다. */
+}
+
+.button-119 {
+  display: block;
+  font-family: Pretendard;
+  background-color: #ff4f4f;
+  /* 빨간색 배경색 */
+  color: #ffffff;
+  /* 흰색 텍스트 색상 */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 138%;
+  /* 22.08px */
+  letter-spacing: -0.32px;
+  border-radius: 6px;
+  border: none;
+  /* 검정색 라인 제거 */
+  position: absolute;
+  top: 67px;
+  /* 원하는 위치로 조정합니다. */
+  left: 330px;
+  /* 원하는 위치로 조정합니다. */
+  margin: 0;
+  /* 기본 마진을 제거합니다. */
+}
+
+.red {
+  width: 39px;
+  height: 135px;
+  margin-left: 180px;
+}
+
+.notice {
+  position: absolute;
+  text-align: left;
+  top: 105px;
+  left: 42px;
+  /* 원하는 위치로 조정합니다. */
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 138%;
+  /* 28.98px */
+  letter-spacing: -0.42px;
+}
+
+.weather {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+  /* 원하는 위치로 조정합니다. */
+}
+
+.ment {
+  width: 293px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 138%;
+  /* 28.98px */
+  letter-spacing: -0.42px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  margin-left: 22px;
+  filter: brightness(0.7);
+}
+
+.button button {
+  width: 306px;
+  height: 60px;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 640;
+  line-height: 138%;
+  letter-spacing: -0.4px;
+  background-color: #efefef;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  background: #fff;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0.7);
+}
+
+.image2 {
+  width: 23px;
+  height: 27px;
+  /* 이모티콘의 세로 크기를 조정합니다. */
+  margin-left: 3px;
+  /* 이모티콘과 텍스트 사이의 간격을 설정합니다. */
+  margin-top: -4px;
+  vertical-align: middle;
+}
+
+.image3 {
+  width: 23px;
+  height: 27px;
+  /* 이모티콘의 세로 크기를 조정합니다. */
+  margin-left: 3px;
+  /* 이모티콘과 텍스트 사이의 간격을 설정합니다. */
+  margin-top: -4px;
+  vertical-align: middle;
+}
+
+.image4 {
+  width: 23px;
+  height: 27px;
+  /* 이모티콘의 세로 크기를 조정합니다. */
+  margin-left: 3px;
+  /* 이모티콘과 텍스트 사이의 간격을 설정합니다. */
+  margin-top: -4px;
+  vertical-align: middle;
+}
+
+.image5 {
+  width: 23px;
+  height: 27px;
+  /* 이모티콘의 세로 크기를 조정합니다. */
+  margin-left: 3px;
+  /* 이모티콘과 텍스트 사이의 간격을 설정합니다. */
+  margin-top: -4px;
+  vertical-align: middle;
+}
+
+.bot {
+  height: 80px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  /* position을 absolute로 변경 */
+  bottom: 0;
+  /* 하단에 정렬되도록 수정 */
+  left: 50%;
+  transform: translateX(-50%);
+  filter: brightness(0.7);
+}
+
+.alram {
+  position: absolute;
+  width: 45px;
+  height: 47px;
+  margin-left: -329px;
+  margin-top: 23px;
+}
+
+.home {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-left: -235px;
+  margin-top: -10px;
+}
+
+.mypage {
+  position: absolute;
+  width: 56px;
+  height: 47px;
+  margin-top: 23px;
+  margin-left: -107px;
+}
+
+.down {
+  margin-top: 13px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* 스타일링을 위한 예시 */
+
+.alm-icon {
+  margin-top: 3px;
+  margin-bottom: 2px;
+}
+
+.bell-icon {
+  position: absolute;
+  left: 60px;
+  top: 21px;
+}
+
+.content-icon {
+  margin-top: 3px;
+}
+
+/* 스타일링을 위한 예시 */
+
+.weather {
+  margin-top: 10px;
+  width: 100px;
+  height: 50px;
+  left: 258px;
+}
+
+.imageon {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/*안내문구*/
+.box {
+  position: absolute;
+  top: 41%;
+  left: 50%;
+  width: 280px;
+  height: 195px;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  background: white;
+  line-height: 138%;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1.5px solid #eee;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 안내문구 안에 있는 요소들*/
+
+.first {
+  position: absolute;
+  top: 28px;
+  left: 100px;
+  z-index: 100;
+}
+
+.second {
+  position: absolute;
+  top: 55px;
+  left: 75px;
+  z-index: 100;
+}
+
+.third {
+  position: absolute;
+  top: 92px;
+  left: 50px;
+  z-index: 100;
+}
+
+.call {
+  width: 90px;
+  height: 45px;
+  display: block;
+  font-family: Pretendard;
+  background: rgb(255, 255, 255);
+  color: #ff0000;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 138%;
+  letter-spacing: -0.32px;
+  border-radius: 15px;
+  position: absolute;
+  top: 165px;
+  left: 40px;
+  margin: 0;
+  border-radius: 13px;
+  border: 2px solid #f00;
+  background: #fff;
+  z-index: 100;
+}
+
+.close {
+  width: 150px;
+  height: 45px;
+  display: block;
+  font-family: Pretendard;
+
+  background: #f00;
+  /* 빨간색 배경색 */
+  color: #ffffff;
+  /* 흰색 텍스트 색상 */
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 138%;
+  /* 22.08px */
+  letter-spacing: -0.32px;
+  border-radius: 13px;
+  border: none;
+  /* 검정색 라인 제거 */
+  position: absolute;
+  top: 165px;
+  /* 원하는 위치로 조정합니다. */
+  left: 135px;
+  /* 원하는 위치로 조정합니다. */
+  margin: 0;
+  /* 기본 마진을 제거합니다. */
+  z-index: 100;
+}
+
+/* 알림창 스타일 */
+.notification {
+  position: absolute;
+  margin-bottom: 540px;
+  /* Vertically center the notification */
+  left: 50%;
+  width: 280px;
+  height: 77px;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  background: white;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 138%;
+  /* 27.6px */
+  letter-spacing: -0.4px;
+  /* Adjust font size for better visibility */
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1.5px solid #eee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  vertical-align: middle;
+}
+
+/* 스타일링을 위한 예시 */
+
+.alm-icon {
+  margin-top: 3px;
+  margin-bottom: 2px;
+}
+
+.bell-icon {
+  position: absolute;
+  left: 60px;
+  top: 21px;
+}
+
+.content-icon {
+  position: absolute;
+  margin-top: 35px;
+  margin-left: -32px;
+}

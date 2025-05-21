@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/on-boarding/starting.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 스플래시 1번-->
+      <div id="div1" class="div1">
+        <div class="left-margin-image">
+          <img src="/svg/on-boarding/ylogo.svg" alt="Left Margin Image" />
+        </div>
+        <img src="/svg/on-boarding/Group 36.svg" alt="이미지" class="image1" />
+        <h2>부양가족을 위한 알림 공공서비스</h2>
+        <img src="/svg/on-boarding/Group 41.svg" alt="이미지2" class="image2" />
+      </div>
+
+      <!-- 스플래시 2번-->
+      <div id="div2" style="display: none" class="div2">
+        <div class="left-margin-image">
+          <img src="/svg/on-boarding/ylogo.svg" alt="Left Margin Image" />
+        </div>
+        <img src="/svg/on-boarding/Group 36.svg" alt="이미지1" class="image3" />
+        <div class="progress-bar"></div>
+      </div>
+
+      <!-- 온보딩 시작 3번-->
+      <div id="left" class="left">
+        <img src="/svg/on-boarding/ylogo.svg" alt="Left Margin Image" />
+      </div>
+
+      <div id="div3" style="display: none" class="div3">
+        <div class="onboarding-circles">
+          <div class="onboarding-circle"></div>
+          <div class="onboarding-circle"></div>
+          <div class="onboarding-circle"></div>
+        </div>
+
+        <div class="image-container">
+          <img
+            src="/svg/on-boarding/Group 427320632 (3).svg"
+            alt="Image 1"
+            class="onboarding-image"
+          />
+        </div>
+        <button id="startButton" class="start-button">시작하기</button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      var count = 0;
+      const div1 = document.getElementById("div1");
+      const div2 = document.getElementById("div2");
+      const div3 = document.getElementById("div3");
+      const left = document.getElementById("left");
+
+      // div1, div2, div3, left를 숨기기 위한 초기 설정
+      div1.style.display = "none";
+      div2.style.display = "none";
+      div3.style.display = "none";
+      left.style.display = "none";
+
+      // div1을 보여주기
+      div1.style.display = "block";
+
+      setTimeout(function () {
+        // div1 숨기고 div2 보여주기
+        div1.style.display = "none";
+        div2.style.display = "block";
+
+        startProgressBarAnimation(function () {
+          // 게이지 바 애니메이션이 완료되면 div2 숨기고 div3와 left를 함께 보여주기
+          div2.style.display = "none";
+          div3.style.display = "block";
+          left.style.display = "block";
+        });
+      }, 1300);
+
+      // 게이지 바 애니메이션 함수
+      function startProgressBarAnimation(callback) {
+        const progressBar = document.querySelector(".progress-bar");
+        let progress = 0;
+        const interval = 13; // 애니메이션 갱신 간격 (밀리초)
+        const maxWidth = 72; // 게이지 바의 최대 너비 (72%)
+        const animationDuration = 1300; // 애니메이션 지속 시간 (밀리초)
+
+        const frames = animationDuration / interval; // 프레임 수
+
+        function updateProgressBar() {
+          if (progress < frames) {
+            progress++;
+            const width = (progress / frames) * maxWidth;
+            progressBar.style.width = width + "%";
+            setTimeout(updateProgressBar, interval);
+          } else {
+            // 게이지 바 애니메이션이 완료되면 콜백 함수 호출
+            setTimeout(() => {
+              if (callback) {
+                callback();
+              }
+            }, 500); // 200밀리초의 딜레이 추가
+          }
+        }
+
+        updateProgressBar();
+      }
+
+      const images = [
+        "/svg/on-boarding/Group 427320632 (3).svg",
+        "/svg/on-boarding/Group 427320632 (4).svg",
+        "/svg/on-boarding/Group 427320632 (5).svg",
+      ];
+      let currentImageIndex = 0;
+      let currentCircleIndex = 0;
+
+      const onboardingImage = document.querySelector(".onboarding-image");
+      const onboardingCircles = document.querySelectorAll(".onboarding-circle");
+      const startButton = document.getElementById("startButton");
+
+      updateCircles();
+
+      startButton.addEventListener("click", () => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        const nextImage = images[currentImageIndex];
+        onboardingImage.style.animation = "slideOutToLeft 0.5s ease-in-out";
+        setTimeout(() => {
+          if (currentCircleIndex === 2) {
+            window.location.href = "/members/new";
+          } else {
+            onboardingImage.src = nextImage;
+            onboardingImage.style.animation =
+              "slideInFromRight 0.5s ease-in-out";
+
+            // 새 이미지가 세 번째 이미지인 경우에만 margin-left를 적용
+            if (currentImageIndex === 2) {
+              onboardingImage.style.marginLeft = "15px";
+            } else {
+              onboardingImage.style.marginLeft = "0";
+            }
+
+            currentCircleIndex =
+              (currentCircleIndex + 1) % onboardingCircles.length;
+            updateCircles();
+          }
+        }, 500);
+      });
+
+      function updateCircles() {
+        onboardingCircles.forEach((circle, index) => {
+          if (index === currentCircleIndex) {
+            circle.classList.add("blue");
+          } else {
+            circle.classList.remove("blue");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

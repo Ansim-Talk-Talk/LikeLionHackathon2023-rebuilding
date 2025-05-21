@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/pe-home/emoticon.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/pe-home/yeslog.svg" alt="Left Margin Image" />
+      </div>
+      <div class="top">
+        <div class="send">
+          이모티콘 보내기
+          <img src="/svg/pe-home/2.svg" alt="이모티콘1" class="image2" />
+          <img
+            src="/svg/pe-home/X.svg"
+            alt="뒤로가기"
+            class="cancle"
+            onclick="goToModePage()"
+          />
+          <p class="gray-text">오늘의 기분을 표현해보세요!</p>
+        </div>
+
+        <div class="emoticon1">
+          <img
+            src="/svg/pe-home/emoticon1.svg"
+            alt="emoticon1"
+            class="emoticon1"
+            onclick="handleButtonClick(1)"
+          />
+          <img
+            src="/svg/pe-home/emoticon2.svg"
+            alt="emoticon2"
+            class="emoticon2"
+            onclick="handleButtonClick(2)"
+          />
+          <img
+            src="/svg/pe-home/emoticon3.svg"
+            alt="emoticon3"
+            class="emoticon3"
+            onclick="handleButtonClick(3)"
+          />
+        </div>
+        <div class="emoticon2">
+          <img
+            src="/svg/pe-home/emoticon4.svg"
+            alt="emoticon4"
+            class="emoticon4"
+            onclick="handleButtonClick(4)"
+          />
+          <img
+            src="/svg/pe-home/emoticon5.svg"
+            alt="emoticon5"
+            class="emoticon5"
+            onclick="handleButtonClick(5)"
+          />
+          <img
+            src="/svg/pe-home/emoticon6.svg"
+            alt="emoticon6"
+            class="emoticon6"
+            onclick="handleButtonClick(6)"
+          />
+        </div>
+        <div class="emoticon3">
+          <img
+            src="/svg/pe-home/emoticon7.svg"
+            alt="emoticon7"
+            class="emoticon7"
+            onclick="handleButtonClick(7)"
+          />
+          <img
+            src="/svg/pe-home/emoticon8.svg"
+            alt="emoticon8"
+            class="emoticon8"
+            onclick="handleButtonClick(8)"
+          />
+          <img
+            src="/svg/pe-home/emoticon9.svg"
+            alt="emoticon9"
+            class="emoticon9"
+            onclick="handleButtonClick(9)"
+          />
+        </div>
+      </div>
+
+      <div class="bot">
+        <img src="/svg/pe-home/yeeback.svg" alt="흐린로고" class="down" />
+      </div>
+    </div>
+
+    <script>
+      // 알림창을 표시하고 1.3초 후에 제거하는 함수
+      function showNotification() {
+        var notification = document.createElement("div");
+
+        var almIcon = document.createElement("img");
+        almIcon.src = "/svg/pe-home/alrim.svg";
+        almIcon.classList.add("alm-icon");
+
+        var bellIcon = document.createElement("img");
+        bellIcon.src = "/svg/pe-home/jong.svg";
+        bellIcon.classList.add("bell-icon");
+
+        var contentIcon = document.createElement("img");
+        contentIcon.src = "/svg/pe-home/stick.svg";
+        contentIcon.classList.add("content-icon");
+
+        notification.appendChild(almIcon);
+        notification.appendChild(bellIcon);
+        notification.appendChild(contentIcon);
+
+        notification.classList.add("notification");
+
+        document.body.appendChild(notification);
+
+        setTimeout(function () {
+          document.body.removeChild(notification);
+        }, 1300); // 1.3초 후에 제거
+      }
+
+      function handleButtonClick(buttonNumber) {
+        showNotification();
+      }
+
+      function goToModePage() {
+        window.location.href = "pe-home-main.html";
+      }
+    </script>
+  </body>
+</html>

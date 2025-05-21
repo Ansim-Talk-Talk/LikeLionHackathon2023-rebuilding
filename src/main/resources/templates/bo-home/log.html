@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/bo-home/log.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/bo-home/logo.svg" alt="Left Margin Image" />
+      </div>
+
+      <div class="right-margin-image">
+        <img src="/svg/bo-home/qrcode.svg" alt="right Margin Image" />
+      </div>
+
+      <img src="/svg/bo-home/download.svg" alt="download" class="download" />
+
+      <div class="top">
+        <div class="top-container">
+          <img src="/svg/bo-home/log.svg" alt="이미지" class="image" />
+        </div>
+      </div>
+
+      <div class="zone">
+        <div class="ment">
+          최신순
+          <img src="/svg/bo-home/semo.svg" alt="이미지" class="tri" />
+        </div>
+      </div>
+
+      <!-- 받은메시지 전체 컨테이너 -->
+      <div class="chat-container" id="chat-box">
+        <!-- 받은메시지 한세트 -->
+        <img src="/svg/bo-home/ball.svg" alt="이미지" class="ball" />
+        <div class="receive">
+          <div class="chat">
+            <p id="message"></p>
+            <div class="time-table">
+              <span class="date">2023.08.22</span>
+              <span class="time">19:35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 필수 -->
+
+      <div class="bot">
+        <img src="/svg/bo-home/Rectangle 6272 (1).svg" alt="하단바" class="down" />
+        <img
+          src="/svg/bo-home/locate.svg"
+          alt="위치확인"
+          class="where"
+          onclick="goToModePage(1)"
+        />
+        <img
+          src="/svg/bo-home/Group 427320591.svg"
+          alt="홈"
+          class="home"
+          onclick="goToModePage(2)"
+        />
+        <img
+          src="/svg/bo-home/Group 427320511.svg"
+          alt="마이페이지"
+          class="mypage"
+          onclick="goToModePage(3)"
+        />
+      </div>
+    </div>
+
+    <script>
+      function goToModePage() {
+        window.location.href = "bo-home-main.html";
+      }
+
+      function navigateToPage4() {
+        goToModePage();
+      }
+    </script>
+  </body>
+</html>

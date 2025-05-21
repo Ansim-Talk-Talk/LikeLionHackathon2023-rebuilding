@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/bo-home/todolist2.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/bo-home/logo.svg" alt="Left Margin Image" />
+      </div>
+
+      <div class="right-margin-image">
+        <img src="/svg/bo-home/qrcode.svg" alt="right Margin Image" />
+      </div>
+
+      <img src="/svg/bo-home/download.svg" alt="download" class="download" />
+      <div class="top">
+        <div class="send">
+          피보호자님의 일정이에요
+          <img src="/svg/bo-home/4.svg" alt="이모티콘" class="image" />
+          <img
+            src="/svg/bo-home/X.svg"
+            alt="뒤로가기"
+            class="cancle"
+            onclick="goToModePage()"
+          />
+        </div>
+
+        <div class="todo">2023년 8월 20일 (일)</div>
+
+        <div class="task-box" id="todoList"></div>
+
+        <div class="button">
+          <button onclick="navigateToPage1()" class="back">이전</button>
+          <button id="addButton" onclick="addNewTask()" class="New">
+            일정 추가
+          </button>
+          <button onclick="navigateToPage2()" class="next">다음</button>
+        </div>
+      </div>
+
+      <div class="bot">
+        <img src="/svg/bo-home/hLogo.svg" alt="흐린로고" class="down" />
+      </div>
+    </div>
+
+    <script>
+      function saveTaskContent(taskElement, content) {
+        const taskId = taskElement.getAttribute("data-task-id");
+        if (taskId) {
+          localStorage.setItem(`task_${taskId}_page2`, content);
+        }
+      }
+
+      function loadTaskContent(taskElement) {
+        const taskId = taskElement.getAttribute("data-task-id");
+        if (taskId) {
+          const savedContent = localStorage.getItem(`task_${taskId}_page2`);
+          if (savedContent) {
+            const taskContent = taskElement.querySelector(".content");
+            taskContent.innerHTML = savedContent;
+          }
+        }
+      }
+
+      function addNewTask() {
+        const todoList = document.getElementById("todoList");
+        const newTask = document.createElement("div");
+        newTask.classList.add("task");
+
+        const taskContent = document.createElement("div");
+        taskContent.classList.add("content");
+        taskContent.innerHTML = `
+        <div class="editable-text" onclick="enableEditMode(this)">⦁</div>
+        <input type="text" class="edit-input" placeholder="일정을 입력해주세요." onkeydown="checkEnter(event, this)" onblur="disableEditMode(this)">
+      `;
+
+        newTask.appendChild(taskContent);
+        todoList.appendChild(newTask);
+
+        // Enable edit mode for the newly created input
+        const input = taskContent.querySelector(".edit-input");
+        input.style.display = "block";
+        input.focus();
+      }
+
+      function enableEditMode(element) {
+        const parent = element.parentNode;
+        const input = parent.querySelector(".edit-input");
+        input.readOnly = false;
+        input.style.display = "block";
+        input.focus();
+      }
+
+      function disableEditMode(element) {
+        const parent = element.parentNode;
+        const input = parent.querySelector(".edit-input");
+        input.readOnly = true;
+        input.style.display = "none";
+      }
+
+      function checkEnter(event, element) {
+        if (event.key === "Enter") {
+          const taskText = element.value;
+          if (taskText.trim() !== "") {
+            const taskContent = document.createElement("div"); // 새로운 content div 생성
+            taskContent.classList.add("content");
+            taskContent.innerHTML = `⦁ ${taskText}`;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("delete-button");
+            deleteButton.innerText = "X";
+            deleteButton.style.fontFamily = "Pretendard";
+            deleteButton.style.backgroundColor = "#ff4f4f"; // 빨간색 배경
+            deleteButton.style.color = "#ffffff"; // 흰색 텍스트 색상
+            deleteButton.style.fontSize = "16px";
+            deleteButton.style.fontStyle = "normal";
+            deleteButton.style.fontWeight = "500";
+            deleteButton.style.lineHeight = "138%"; /* 22.08px */
+            deleteButton.style.letterSpacing = "-0.32px";
+            deleteButton.style.borderRadius = "6px";
+            deleteButton.style.border = "none";
+            deleteButton.style.marginTop = "20px";
+            deleteButton.style.marginLeft = "15px"; // 왼쪽 여백을 1px로 조정
+            deleteButton.onclick = function () {
+              deleteTask(this);
+            };
+
+            const contentContainer = document.createElement("div");
+            contentContainer.style.display = "flex"; // 컨테이너 내의 요소들을 가로로 정렬
+            contentContainer.style.alignItems = "center"; // 세로 중앙 정렬
+
+            contentContainer.appendChild(taskContent);
+            contentContainer.appendChild(deleteButton);
+
+            // 새로운 내용으로 대체합니다.
+            const task = element.closest(".task");
+            if (task) {
+              task.innerHTML = ""; // 기존 내용 비우기
+              task.appendChild(contentContainer);
+            }
+
+            disableEditMode(element);
+          }
+        }
+      }
+
+      function deleteTask(element) {
+        const task = element.closest(".task");
+        if (task) {
+          task.remove();
+        }
+      }
+
+      function goToModePage() {
+        window.location.href = "bo-home-main.html";
+      }
+
+      function navigateToPage1() {
+        // 페이지 이동 전에 로컬 스토리지의 데이터를 저장
+        const tasks = document.querySelectorAll(".task");
+        tasks.forEach((task) => {
+          saveTaskContent(task, task.querySelector(".content").innerHTML);
+        });
+
+        window.location.href = "todolist.html";      }
+
+      function navigateToPage2() {
+        // 페이지 이동 전에 로컬 스토리지의 데이터를 저장
+        const tasks = document.querySelectorAll(".task");
+        tasks.forEach((task) => {
+          saveTaskContent(task, task.querySelector(".content").innerHTML);
+        });
+
+        window.location.href = "todolist2.html";
+      }
+    </script>
+  </body>
+</html>

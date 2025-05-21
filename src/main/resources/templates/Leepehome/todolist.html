@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:cursor="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>안심톡톡</title>
+  <link rel="stylesheet" href="./css/todolistt.css" />
+  <link rel="shortcut icon" href="./svg/Favicon.svg">
+
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="left-margin-image">
+    <img src="/svg/여백로고.svg" alt="Left Margin Image" />
+  </div>
+  <div class="top">
+    <div class="send">
+      김옥자님의 일정이에요
+      <img src="./svg/4.svg" alt="이모티콘" class="image" />
+      <img
+              src="./svg/X.svg"
+              alt="뒤로가기"
+              class="cancle"
+              onclick="goToModePage()"
+      />
+    </div>
+
+    <div class="todo" id="dateDisplay"></div>
+
+    <div class="task-box">
+      <div class="content" id="chat-box">
+      </div>
+    </div>
+
+    <div class="button">
+      <button onclick="navigateToPage1()" class="back">이전</button>
+      <button onclick="navigateToPage2()" class="next">다음</button>
+    </div>
+  </div>
+
+  <div class="bot">
+    <img src="./svg/흐린로고.svg" alt="흐린로고" class="down" />
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+var stompClient = null;
+$(document).ready(function() {
+    console.log("Index page is ready");
+    connect();
+
+    $("#send").click(function() {
+        sendMessage();
+    });
+});
+
+function connect() {
+    var socket = new SockJS('/our-websocket');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/messages', function (message) {
+            showMessage(JSON.parse(message.body).content);
+        });
+
+    });
+}
+
+function showMessage(message) {
+    var chatBox = $("#chat-box");
+    var isFirstMessage = chatBox.children().length === 0;
+
+    var currentDate = new Date();
+    var year = currentDate.getFullYear();
+    var month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    var day = String(currentDate.getDate()).padStart(2, '0');
+    var hours = String(currentDate.getHours()).padStart(2, '0');
+    var minutes = String(currentDate.getMinutes()).padStart(2, '0');
+
+    var startIndex = message.indexOf("⦁"); // ⦁ 문자의 위치 찾기
+    if (startIndex !== -1) {
+        var textMessage = message.substring(startIndex + 1); // ⦁ 다음 문자부터 추출
+        var newMessageDiv = $("<div class='content'>⦁" + textMessage + "</div>");
+
+        chatBox.append(newMessageDiv);
+        chatBox.animate({ scrollTop: newMessageDiv.offset().top }, 500);
+    }
+}
+
+
+     document.addEventListener("DOMContentLoaded", function() {
+    var dateElement = document.getElementById("dateDisplay");
+    if (dateElement) {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더해줌
+        var day = today.getDate();
+        var dayOfWeek = ["일", "월", "화", "수", "목", "금", "토"][today.getDay()];
+
+        var dateText = year + "년 " + month + "월 " + day + "일 (" + dayOfWeek + ")";
+        dateElement.innerHTML = dateText;
+    }
+});
+
+    // 버튼에 마우스가 들어왔을 때의 동작
+    function handleMouseEnter(buttonNumber) {
+      var button = document.getElementById(buttonNumber);
+      button.style.backgroundColor = "#1964F7";
+      button.style.color = "#FFFFFF";
+    }
+
+    // 버튼에서 마우스가 나갔을 때의 동작
+    function handleMouseLeave(buttonNumber) {
+      var button = document.getElementById(buttonNumber);
+      button.style.backgroundColor = "#efefef";
+      button.style.color = "#202020";
+    }
+
+    function goToModePage() {
+      window.location.href = "pe-home-main.html";
+    }
+
+        function navigateToPage1() {
+        // 페이지 이동 전에 로컬 스토리지의 데이터를 저장
+        const tasks = document.querySelectorAll(".task");
+        tasks.forEach((task) => {
+          saveTaskContent(task, task.querySelector(".content").innerHTML);
+        });
+
+        window.location.href = "todolist.html";
+      }
+
+      function navigateToPage2() {
+        // 페이지 이동 전에 로컬 스토리지의 데이터를 저장
+        const tasks = document.querySelectorAll(".task");
+        tasks.forEach((task) => {
+          saveTaskContent(task, task.querySelector(".content").innerHTML);
+        });
+
+        window.location.href = "todolist2.html";
+      }
+    </script>
+</body>
+</html>

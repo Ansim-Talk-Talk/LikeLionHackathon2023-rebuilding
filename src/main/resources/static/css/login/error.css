@@ -1,0 +1,54 @@
+body {
+    font-family: Pretendard;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 390px;
+    height: 844px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    position: relative;
+    margin-top: 220px;
+}
+
+.click button {
+    width: 148px;
+    height: 41px;
+    color: #969696;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 650;
+    line-height: 138%; /* 27.6px */
+    letter-spacing: -0.4px;
+    background-color: #efefef;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 78px; /* 20px 띄우기 */
+}
+
+.click button:hover {
+    background-color: #f00;
+    color: #fff;
+}
+
+.click button:hover {
+    background-color: #f00;
+    color: #fff;
+}

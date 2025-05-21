@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/pe-home/log.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/pe-home/yeslog.svg" alt="Left Margin Image" />
+      </div>
+      <div class="top">
+        <div class="top-container">
+          <img src="/svg/pe-home/alrimlog.svg" alt="이미지" class="image" />
+        </div>
+      </div>
+
+      <div class="zone">
+        <div class="ment">
+          최신순
+          <img src="/svg/pe-home/trilog.svg" alt="이미지" class="tri" />
+        </div>
+      </div>
+
+      <!-- 받은메시지 전체 컨테이너 -->
+      <div class="chat-container" id="chat-box">
+        <!-- 받은메시지 한세트 -->
+        <img src="/svg/pe-home/ball.svg" alt="이미지" class="ball" />
+        <div class="receive">
+          <div class="chat">
+            <p>[메시지] 엄마 뭐하셔요</p>
+            <div class="time-table">
+              <span class="date">2023.08.22</span>
+              <span class="time">19:35</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 필수 -->
+      <div class="bot">
+        <img
+          src="/svg/pe-home/Rectangle 6272 (1).svg"
+          alt="하단바"
+          class="down"
+        />
+        <img
+          src="/svg/pe-home/Group 427320592 (1).svg"
+          alt="알림내역"
+          class="alram"
+          onclick="goToModePage(1)"
+        />
+        <img
+          src="/svg/pe-home/Group 427320591.svg"
+          alt="홈"
+          class="home"
+          onclick="goToModePage(2)"
+        />
+        <img
+          src="/svg/pe-home/Group 427320511.svg"
+          alt="마이페이지"
+          class="mypage"
+          onclick="goToModePage(3)"
+        />
+      </div>
+    </div>
+    <script>
+      function goToModePage(modeId) {
+        switch (modeId) {
+          case 1:
+            window.location.href = "log.html";
+            break;
+          case 2:
+            window.location.href = "pe-home-main.html";
+            break;
+          case 3:
+            window.location.href = "mypage.html";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

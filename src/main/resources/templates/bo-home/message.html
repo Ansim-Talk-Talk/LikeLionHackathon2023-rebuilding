@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/bo-home/message.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/bo-home/logo.svg" alt="Left Margin Image" />
+      </div>
+
+      <div class="right-margin-image">
+        <img src="/svg/bo-home/qrcode.svg" alt="right Margin Image" />
+      </div>
+
+      <img src="/svg/bo-home/download.svg" alt="download" class="download" />
+      <div class="top">
+        <div class="msg">
+          메시지 보내기 <img src="/svg/bo-home/1.svg" alt="이모티콘1" class="image2" />
+          <img
+            src="/svg/bo-home/X.svg"
+            alt="뒤로가기"
+            class="cancle"
+            onclick="goToModePage()"
+          />
+        </div>
+        <div class="name">
+          <input
+            type="text"
+            id="one"
+            class="input"
+            placeholder="직접입력"
+            onkeyup="checkInputValue()"
+            contenteditable="true"
+          />
+          <button class="send" onclick="handleButtonClick(1)">전송</button>
+        </div>
+        <div class="button">
+          <button id="two" onclick="handleButtonClick(2)">밖이에요</button>
+          <button id="three" onclick="handleButtonClick(3)">
+            식사중이에요
+          </button>
+          <button id="four" onclick="handleButtonClick(4)">산책중이에요</button>
+          <button id="five" onclick="handleButtonClick(5)">
+            집에 도착했어요
+          </button>
+          <button id="six" onclick="handleButtonClick(6)">
+            전화를 걸어주세요
+          </button>
+          <button id="seven" onclick="handleButtonClick(7)">
+            씻는중이에요
+          </button>
+          <button id="eight" onclick="handleButtonClick(8)">
+            청소중이에요
+          </button>
+        </div>
+      </div>
+      <div class="bot">
+        <img src="/svg/bo-home/hLogo.svg" alt="흐린로고" class="down" />
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function checkInputValue() {
+        var inputValue = document.getElementById("one").value;
+
+        if (inputValue.length > 0) {
+          document.getElementById("one").style.borderColor = "#1964f7";
+          document.querySelector(".send").style.backgroundColor = "#1964f7";
+        } else {
+          document.getElementById("one").style.borderColor = "#cacaca";
+          document.querySelector(".send").style.backgroundColor = "#b0b0b0";
+        }
+      }
+
+      function handleButtonClick(buttonNumber) {
+        showNotification();
+
+        // 입력칸 초기화
+        document.getElementById("one").value = "";
+
+        // 입력칸의 태두리 색상 초기화
+        document.getElementById("one").style.borderColor = "#cacaca";
+
+        // 버튼의 배경색 초기화
+        document.querySelector(".send").style.backgroundColor = "#b0b0b0";
+      }
+
+      // 알림창을 표시하고 1.3초 후에 제거하는 함수
+      function showNotification() {
+        var notification = document.createElement("div");
+
+        var almIcon = document.createElement("img");
+        almIcon.src = "/svg/bo-home/alram.svg";
+        almIcon.classList.add("alm-icon");
+
+        var bellIcon = document.createElement("img");
+        bellIcon.src = "/svg/bo-home/jong.svg";
+        bellIcon.classList.add("bell-icon");
+
+        var contentIcon = document.createElement("img");
+        contentIcon.src = "/svg/bo-home/goalram.svg";
+        contentIcon.classList.add("content-icon");
+
+        notification.appendChild(almIcon);
+        notification.appendChild(bellIcon);
+        notification.appendChild(contentIcon);
+
+        notification.classList.add("notification");
+
+        document.body.appendChild(notification);
+
+        setTimeout(function () {
+          document.body.removeChild(notification);
+        }, 1300); // 1.3초 후에 제거
+      }
+
+      function handleMouseEnter(buttonNumber) {
+        if (buttonNumber !== "one" && buttonNumber !== "input") {
+          var button = document.getElementById(buttonNumber);
+          button.style.backgroundColor = "#1964F7";
+          button.style.color = "#FFFFFF";
+        }
+      }
+
+      function handleMouseLeave(buttonNumber) {
+        if (buttonNumber !== "one" && buttonNumber !== "input") {
+          var button = document.getElementById(buttonNumber);
+          button.style.backgroundColor = "#efefef";
+          button.style.color = "#202020";
+        }
+      }
+
+      function goToModePage() {
+        window.location.href = "bo-home-main.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,243 @@
+body {
+  font-family: Pretendard;
+  background-color: #f5f5f5;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  text-align: center;
+  background-color: #1964f7;
+  border-radius: 10px 10px 35px 35px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-margin-image {
+  position: absolute;
+  top: 50%;
+  right: 528px;
+  transform: translateY(-50%);
+  padding-left: 200px; /* 왼쪽 여백 추가 */
+}
+
+.top {
+  width: 390px;
+  height: 542px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+
+  border: none;
+  border-radius: 35px 35px 10px 10px;
+  cursor: pointer;
+
+  position: absolute;
+  /* position을 absolute로 변경 */
+  bottom: 0;
+  /* 하단에 정렬되도록 수정 */
+  left: 195.2px;
+  transform: translateX(-50%);
+}
+
+.ment:hover,
+.ment2:hover,
+.ment3:hover,
+.ment4:hover,
+.ment5:hover {
+  color: #1964f7; /* 파랑색으로 변경 (예시) */
+}
+
+.image {
+  width: 99px;
+  height: 150px;
+  position: absolute;
+  left: 28px;
+  /* 원하는 위치로 조정합니다. */
+}
+
+.notice {
+  position: absolute;
+  text-align: left;
+  top: 180px;
+  left: 42px;
+  /* 원하는 위치로 조정합니다. */
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 138%;
+  /* 28.98px */
+  letter-spacing: -0.42px;
+}
+
+.ment {
+  width: 293px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 138%;
+  /* 24.84px */
+  letter-spacing: -0.54px;
+  margin-top: 85px;
+  margin-left: -45px;
+  margin-bottom: 5px;
+}
+
+.ment2 {
+  width: 293px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 138%;
+  /* 24.84px */
+  letter-spacing: -0.54px;
+  margin-top: 20px;
+  margin-left: -54px;
+}
+
+.ment3 {
+  width: 293px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 138%;
+  /* 24.84px */
+  letter-spacing: -0.54px;
+  margin-top: 20px;
+  margin-left: -68px;
+}
+
+.ment4 {
+  width: 293px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 138%;
+  /* 24.84px */
+  letter-spacing: -0.54px;
+  margin-top: 20px;
+  margin-left: -71px;
+}
+
+.ment5 {
+  width: 293px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 138%;
+  /* 24.84px */
+  letter-spacing: -0.54px;
+  margin-top: 20px;
+  margin-left: -71px;
+}
+
+.line1 {
+  width: 396px;
+  height: 1px;
+}
+
+.line2 {
+  width: 396px;
+  height: 1px;
+  margin-top: 20px;
+}
+
+.line3 {
+  width: 396px;
+  height: 1px;
+  margin-top: 20px;
+}
+
+.line4 {
+  width: 396px;
+  height: 1px;
+  margin-top: 20px;
+}
+
+.image1 {
+  width: 20px;
+  height: 24px;
+  margin-right: 40px; /* 메시지 보내기 문구와의 간격을 설정합니다. */
+  margin-top: -50px; /* 메시지 보내기 문구와의 간격을 설정합니다. */
+  vertical-align: middle;
+  position: absolute;
+  right: 0; /* 오른쪽에 위치하도록 설정합니다. */
+}
+
+.image2 {
+  width: 20px;
+  height: 24px;
+  margin-right: 40px; /* 메시지 보내기 문구와의 간격을 설정합니다. */
+  margin-top: -25px; /* 메시지 보내기 문구와의 간격을 설정합니다. */
+  vertical-align: middle;
+  position: absolute;
+  right: 0; /* 오른쪽에 위치하도록 설정합니다. */
+}
+
+.bot {
+  height: 80px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  /* position을 absolute로 변경 */
+  bottom: 0;
+  /* 하단에 정렬되도록 수정 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.alram {
+  position: absolute;
+  width: 45px;
+  height: 47px;
+  margin-left: -329px;
+  margin-top: 23px;
+}
+
+.home {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-left: -235px;
+  margin-top: -10px;
+}
+
+.mypage {
+  position: absolute;
+  width: 56px;
+  height: 47px;
+  margin-top: 23px;
+  margin-left: -107px;
+}
+
+.down {
+  margin-top: 13px;
+  border-radius: 0 0 10px 10px;
+}

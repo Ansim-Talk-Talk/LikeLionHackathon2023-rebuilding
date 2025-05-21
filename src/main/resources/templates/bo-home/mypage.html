@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/bo-home/mypage.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/bo-home/logo.svg" alt="Left Margin Image" />
+      </div>
+
+      <div class="right-margin-image">
+        <img src="/svg/bo-home/qrcode.svg" alt="right Margin Image" />
+      </div>
+
+      <img src="/svg/bo-home/download.svg" alt="download" class="download" />
+      <div class="top-container">
+        <img src="/svg/bo-home/Group427320463.svg" alt="이미지" class="image" />
+        <div class="notice">안녕하세요<br /><span th:text="${member.name}"></span>님!</div>
+      </div>
+      <div class="top">
+        <div class="ment">내가 보낸 메시지</div>
+        <img src="/svg/bo-home/Line 13.svg" alt="line" class="line1" />
+        <img
+          src="/svg/bo-home/Vector 108 (Stroke).svg"
+          alt=">"
+          class="image1"
+          onclick="goToModePage()"
+        />
+        <div class="ment2">개인정보 관리</div>
+        <img src="/svg/bo-home/Line 13.svg" alt="line" class="line2" />
+        <img
+          src="/svg/bo-home/Vector 108 (Stroke).svg"
+          alt=">"
+          class="image1"
+          onclick="goToModePage()"
+        />
+        <div class="ment3">APP 설정</div>
+        <img src="/svg/bo-home/Line 13.svg" alt="line" class="line3" />
+        <img
+          src="/svg/bo-home/Vector 108 (Stroke).svg"
+          alt=">"
+          class="image1"
+          onclick="goToModePage()"
+        />
+        <div class="ment4">고객센터</div>
+        <img src="/svg/bo-home/Line 13.svg" alt="line" class="line4" />
+        <img
+          src="/svg/bo-home/Vector 108 (Stroke).svg"
+          alt=">"
+          class="image1"
+          onclick="goToModePage()"
+        />
+        <div class="ment5">약관확인</div>
+        <img
+          src="/svg/bo-home/Vector 108 (Stroke).svg"
+          alt=">"
+          class="image2"
+          onclick="goToModePage()"
+        />
+      </div>
+
+      <div class="bot">
+        <img src="/svg/bo-home/Rectangle 6272 (1).svg" alt="하단바" class="down" />
+        <img
+          src="/svg/bo-home/locate.svg"
+          alt="알림내역"
+          class="where"
+          onclick="goToModePage(1)"
+        />
+        <img
+          src="/svg/bo-home/Group 427320591.svg"
+          alt="홈"
+          class="home"
+          onclick="goToModePage(2)"
+        />
+        <img
+          src="/svg/bo-home/Group 427320511.svg"
+          alt="마이페이지"
+          class="mypage"
+          onclick="goToModePage(3)"
+        />
+      </div>
+    </div>
+
+    <script>
+      function goToModePage(modeId) {
+        switch (modeId) {
+          case 1:
+            window.location.href = "locate.html";
+            break;
+          case 2:
+            window.history.back();
+            break;
+          case 3:
+            window.location.href = "mypage.html";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

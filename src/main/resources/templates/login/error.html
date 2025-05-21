@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>안심톡톡</title>
+  <link rel="stylesheet" href="/css/login/error.css" />
+</head>
+<body>
+<div class="container">
+  <div class="error">
+    <img
+            src="/svg/login/error.svg"
+            alt="등호"
+            class="marker"
+            onclick="goToModePage()"
+    />
+    <p style="text-align:center">에러사유<br/><span th:text="${errortext}"></span></p>
+  </div>
+
+  <div class="click">
+    <h3>
+      <button onclick="goToModePage()" id="submit">확인</button>
+    </h3>
+  </div>
+</div>
+
+<script>
+  function goToModePage() {
+    // window.location.href = "boho4.html";
+    window.history.back();
+  }
+</script>
+
+
+</body>
+</html>

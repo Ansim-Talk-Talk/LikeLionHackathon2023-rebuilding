@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/pe-home/119.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="top">
+        <div class="top-container">
+          <img src="/svg/pe-home/Group%20427320463.svg" alt="이미지" class="image" />
+          <button onclick="navigateToPage2()" class="button-119">119</button>
+          <div class="notice">김옥자님,<br />오늘은 해가 뜨거워요.</div>
+          <div class="weather">
+            <img src="/svg/pe-home/sun.svg" alt="이모티콘1" class="imagesun" />
+            <div class="on">
+              체감온도 35°
+              <img src="/svg/pe-home/ondo.svg" alt="이모티콘1" class="imageon" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <div class="ment"></div>
+        <div class="box">
+          <img src="/svg/pe-home/tkdlfps.svg" alt="이모티콘1" class="first" />
+          <img src="/svg/pe-home/anfdma.svg" alt="이모티콘1" class="second" />
+          <img src="/svg/pe-home/dksso.svg" alt="이모티콘1" class="third" />
+          <button onclick="navigateToPage3()" class="call">119 호출하기</button>
+          <button onclick="navigateToPage4()" class="close">닫기</button>
+        </div>
+      </div>
+      <div class="button">
+        <button id="one" onclick="handleButtonClick(2)">
+          메시지 보내기
+          <img src="/svg/pe-home/1.svg" alt="이모티콘1" class="image2" />
+        </button>
+        <button id="two" onclick="handleButtonClick(2)">
+          이모티콘 보내기
+          <img src="/svg/pe-home/2.svg" alt="이모티콘2" class="image3" />
+        </button>
+        <button id="three" onclick="handleButtonClick(3)">
+          알림 확인하기
+          <img src="/svg/pe-home/3.svg" alt="이모티콘3" class="image4" />
+        </button>
+        <button id="four" onclick="handleButtonClick(4)">
+          일정 확인하기
+          <img src="/svg/pe-home/4.svg" alt="이모티콘3" class="image5" />
+        </button>
+      </div>
+
+      <div class="bot">
+        <img src="/svg/pe-home/Rectangle%206272%20(1).svg" alt="하단바" class="down" />
+        <img
+          src="/svg/pe-home/Group%20427320592%20(1).svg"
+          alt="알림내역"
+          class="alram"
+          onclick="goToModePage(1)"
+        />
+        <img
+          src="/svg/pe-home/Group%20427320591.svg"
+          alt="홈"
+          class="home"
+          onclick="goToModePage(2)"
+        />
+        <img
+          src="/svg/pe-home/Group%20427320511.svg"
+          alt="마이페이지"
+          class="mypage"
+          onclick="goToModePage(3)"
+        />
+      </div>
+    </div>
+
+    <script>
+      function goToModePage() {
+        window.history.back();
+      }
+  
+      function navigateToPage4() {
+        goToModePage();
+      }
+    </script>
+  </body>
+</html>

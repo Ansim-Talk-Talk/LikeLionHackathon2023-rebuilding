@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/login/styleboho.css" />
+  </head>
+  <body>
+    <!-- 보호자 첫번째-->
+    <div class="container">
+      <form role="form" action="/members/newboho" th:object="${MemberBohoForm}" method="post">
+      <div id="div0" class="div0">
+        <img
+          src="/svg/login/vector.svg"
+          alt="등호"
+          class="arrow"
+          onclick="goToModePage()"
+        />
+        <h2 class="select0">성함을 알려주세요</h2>
+        <div class="name0">
+          <h3>
+              <label for="input_text" th:for="name">이름</label>
+              <input type="text" th:field="*{name}" id="input_text" placeholder="홍길동" maxlength="3">
+          </h3>
+        </div>
+
+        <div class="next0">
+          <h3>
+            <button type="button" id="submit0">다음</button>
+          </h3>
+        </div>
+      </div>
+
+
+    <!-- 보호자 세번쨰-->
+      <div id="div1" style="display: none" class="div1">
+        <img
+          src="/svg/login/vector.svg"
+          alt="등호"
+          class="arrow"
+          onclick="goToModePage()"
+        />
+        <h2 class="select1">전화번호를 알려주세요</h2>
+
+        <div class="name1">
+          <h3>
+            <label for="input1" th:for="phone">핸드폰</label>
+            <input type="text" id="input1" th:field="*{phone}" placeholder="01012345678"  />
+          </h3>
+
+            </div>
+          </h3>
+
+
+        <div class="next1">
+          <h3>
+            <button type="button" id="submit1">다음</button>
+          </h3>
+        </div>
+      </div>
+      <!-- 보호자 4번쨰-->
+      <div id="div2" style="display: none" class="div2">
+        <img
+          src="/svg/login/vector.svg"
+          alt="등호"
+          class="arrow"
+          onclick="goToModePage()"
+        />
+        <h2 class="select2">문자로 발송된<br />인증번호를 입력해주세요</h2>
+
+        <div class="name2">
+          <h3>
+            <input
+              type="text"
+              id="input21"
+              maxlength="1"
+              oninput="handleInput(event, 1)"
+              placeholder="●"
+            />
+
+            <input
+              type="text"
+              id="input22"
+              maxlength="1"
+              oninput="handleInput(event, 2)"
+              placeholder="●"
+            />
+
+            <input
+              type="text"
+              id="input23"
+              maxlength="1"
+              oninput="handleInput(event, 3)"
+              placeholder="●"
+            />
+
+            <input
+              type="text"
+              id="input24"
+              maxlength="1"
+              oninput="handleInput(event, 4)"
+              placeholder="●"
+            />
+          </h3>
+        </div>
+
+        <div class="next2">
+          <h3>
+
+            <button id="submit2">인증완료</button>
+          </h3>
+        </div>
+      </div>
+
+    </form>
+        <div class="image">
+          <img src="/svg/login/dark.svg" alt="이미지2" class="group2" />
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      var count = 0;
+      const div0 = document.getElementById("div0");
+      const div1 = document.getElementById("div1");
+      const div2 = document.getElementById("div2");
+      // 입력칸의 내용을 감지하여 스타일 변경하는 함수
+      function checkInputValue() {
+        const input = document.getElementById("input_text");
+        const button = document.getElementById("submit0");
+        let inputValue = input.value.trim();
+
+        if (/^[가-힣]{3,}$/.test(inputValue)) {
+          document.querySelector(".name0 input").style.color = "#1964F7";
+          document.querySelector(".name0 input").style.border =
+            "2px solid #1964F7";
+          document.querySelector(".name0 label").style.color = "#1964F7";
+          button.style.backgroundColor = "#1964F7";
+          button.style.color = "#FFFFFF";
+        } else {
+          document.querySelector(".name0").style.backgroundColor = "#fff";
+          document.querySelector(".name0 input").style.color = "#202020";
+          document.querySelector(".name0 label").style.color = "#202020";
+          button.style.backgroundColor = "#efefef";
+          button.style.color = "#898989";
+          input.style.border = "2px solid #b8b8b8";
+        }
+      }
+
+      $(document).ready(function () {
+        if (count == 0) {
+          $("#input_text").keyup(function () {
+            if ($(this).val().length > $(this).attr("maxlength")) {
+              alert("3글자만 입력 가능합니다.");
+              $(this).val($(this).val().substr(0, $(this).attr("maxlength")));
+            }
+            checkInputValue();
+          });
+        }
+      });
+
+      document.getElementById("submit0").addEventListener("click", function () {
+        const input = document.getElementById("input_text");
+        const inputValue = input.value.trim();
+        if (/^[가-힣]{3,}$/.test(inputValue)) {
+          div0.style.display = "none";
+          div1.style.display = "block";
+          count = 1;
+        }
+      });
+
+      function goToModePage() {
+        if (count == 0) {
+          window.location.href = "/members/new";
+        } else if (count == 1) {
+          count = 0;
+          div0.style.display = "block";
+          div1.style.display = "none";
+        } else if (count == 2) {
+          count = 1;
+          div2.style.display = "none";
+          div1.style.display = "block";
+        }
+      }
+
+      //boho3
+      function checkInputValue1() {
+        // input1 요소와 submit1 버튼 요소를 가져옴
+        const input1 = document.getElementById("input1");
+        const button1 = document.getElementById("submit1");
+
+        // input1 요소의 값을 trim하여 공백 제거
+        let input1Value = input1.value.trim();
+
+        // 입력된 값이 11자리의 숫자로 이루어진 경우
+        if (/^\d{11}$/.test(input1Value)) {
+          // 유효한 경우, 스타일 및 버튼 텍스트 변경
+          document.querySelector(".name1 input").style.color = "#1964F7";
+          document.querySelector(".name1 input").style.border =
+            "2px solid #1964F7";
+          document.querySelector(".name1 label").style.color = "#1964F7";
+          button1.style.backgroundColor = "#1964F7";
+          button1.style.color = "#FFFFFF";
+          button1.innerText = "인증번호 받기";
+        } else {
+          // 유효하지 않은 경우, 스타일 및 버튼 텍스트 변경
+          document.querySelector(".name1").style.backgroundColor = "#fff";
+          document.querySelector(".name1 input").style.color = "#202020";
+          document.querySelector(".name1 label").style.color = "#202020";
+          button1.style.backgroundColor = "#efefef";
+          button1.style.color = "#898989";
+          input1.style.border = "2px solid #b8b8b8";
+          button1.innerText = "다음";
+        }
+      }
+
+      document
+        .getElementById("input1")
+        .addEventListener("input", checkInputValue1);
+
+      document.getElementById("submit1").addEventListener("click", function () {
+        checkInputValue1();
+        const input1 = document.getElementById("input1");
+        const input1Value = input1.value.trim();
+
+        if (/^\d{11}$/.test(input1Value)) {
+          // inputValue가 아닌 input1Value로 수정
+          div1.style.display = "none";
+          div2.style.display = "block";
+          count = 2;
+          showNotification();
+        }
+      });
+
+      // 입력칸에서 키가 떼어질 때마다 11글자 이상 입력을 막습니다.
+      document.getElementById("input1").addEventListener("keyup", function () {
+        if (count == 1) {
+          const input1 = document.getElementById("input1");
+          const input1Value = input1.value.trim();
+          if (input1Value.length > 11) {
+            alert("11글자까지만 입력 가능합니다.");
+            input1.value = input1Value.slice(0, 11);
+            // Change the text color for 11 characters
+            document.querySelector(".name1 input").style.color = "#1964F7";
+            document.querySelector(".name1 input").style.border =
+              "2px solid #1964F7";
+            document.querySelector(".name1 label").style.color = "#1964F7";
+            document.getElementById("submit1").style.backgroundColor =
+              "#1964F7";
+            document.getElementById("submit1").style.color = "#FFFFFF";
+          }
+        }
+      });
+
+      let prevInputValues = ["", "", "", ""];
+
+      function handleInput(event, index) {
+        if (count == 2) {
+          const input2Element = event.target;
+          const input2Value = input2Element.value;
+
+          // 입력값이 숫자가 아닌 경우 숫자 이외의 문자를 모두 제거
+          const filtered2Value = input2Value.replace(/\D/g, "");
+          input2Element.value = filtered2Value;
+
+          // 입력값이 있고 다음 칸이 존재하면 다음 칸으로 포커스 이동
+          if (input2Value.length > 0) {
+            const next2Input = input2Element.nextElementSibling;
+            if (next2Input !== null && next2Input.tagName === "INPUT") {
+              next2Input.focus();
+            }
+          }
+
+          // 인증번호가 4개 입력되면 '인증완료' 버튼을 활성화
+          const inputs2 = document.querySelectorAll(".name2 input");
+          const isAllFilled2 = Array.from(inputs2).every(
+            (input) => input.value.length === 1
+          );
+          const submit2Button = document.getElementById("submit2");
+
+          // 모든 입력칸이 채워지면 색상 변경
+          if (isAllFilled2) {
+            let isValid2 = true;
+            const expectedValues = ["1", "2", "3", "4"];
+            inputs2.forEach((input2, i) => {
+              if (input2.value !== expectedValues[i]) {
+                isValid2 = false;
+              }
+            });
+
+            // 입력값이 1, 2, 3, 4가 아니면 버튼을 비활성화합니다.
+            submit2Button.disabled = !isValid2;
+
+            // 입력값이 변했을 때만 색상 변경
+            if (
+              JSON.stringify(prevInputValues) !==
+              JSON.stringify(Array.from(inputs2, (input2) => input2.value))
+            ) {
+              if (isValid2) {
+                inputs2.forEach((input2) => {
+                  input2.style.borderColor = "#1964f7";
+                  input2.style.color = "#1964f7";
+                });
+                submit2Button.style.backgroundColor = "#1964f7";
+                submit2Button.style.color = "#fff";
+              } else {
+                inputs2.forEach((input2) => {
+                  input2.style.borderColor = "#FF4A4A";
+                  input2.style.color = "#FF4A4A";
+                });
+                submit2Button.style.backgroundColor = "#efefef";
+                submit2Button.style.color = "#898989";
+              }
+            }
+          } else {
+            // 모든 입력칸이 채워지지 않은 경우에는 테두리와 글씨 색상을 기본으로 복원
+            inputs2.forEach((input2) => {
+              input2.style.borderColor = "#cacaca"; // 기본 테두리 색상으로 복원
+              input2.style.color = "#b8b8b8"; // 기본 글씨 색상으로 복원
+            });
+
+            // 버튼을 비활성화합니다.
+            submit2Button.disabled = true;
+            submit2Button.style.backgroundColor = "#efefef";
+            submit2Button.style.color = "#898989";
+          }
+
+          // 이전 입력값을 저장합니다.
+          prevInputValues = Array.from(inputs2, (input2) => input2.value);
+        }
+      }
+
+      // Add an event listener for "keydown" on the input fields
+      const input2Fields = document.querySelectorAll(".name2 input");
+      input2Fields.forEach((input2, index) => {
+        input2.addEventListener("keydown", (event) => {
+          const currentValue2 = input2.value;
+
+          // If Backspace key is pressed and the current input is empty
+          if (event.key === "Backspace" && currentValue2 === "") {
+            if (index > 0) {
+              // Move to the previous input
+              input2Fields[index - 1].focus();
+              input2Fields[index - 1].value = ""; // 이전 입력 값을 지움
+            }
+          }
+        });
+      });
+
+      // Add a click event for "인증완료" button
+      document.getElementById("submit2").addEventListener("click", () => {
+        const inputs2 = document.querySelectorAll(".name2 input");
+        const isAllFilled2 = Array.from(inputs2).every(
+          (input2) => input2.value.length === 1
+        );
+        if (isAllFilled2) {
+          // Check if the input values are correct (1, 2, 3, 4)
+          const expected2Values = ["1", "2", "3", "4"];
+          const isValid2 = Array.from(inputs2).every(
+            (input2, i) => input2.value === expected2Values[i]
+          );
+
+          if (isValid2) {
+            window.location.href = "boho5.html";
+          }
+        }
+      });
+
+      function showNotification() {
+        var notification = document.createElement("div");
+        notification.classList.add("notification");
+
+        var almIcon = document.createElement("img");
+        almIcon.src = "/svg/login/inma.svg";
+        almIcon.classList.add("alm-icon");
+        notification.appendChild(almIcon);
+
+        var bellIcon = document.createElement("img");
+        bellIcon.src = "/svg/login/mimage.svg";
+        bellIcon.classList.add("bell-icon");
+        notification.appendChild(bellIcon);
+
+        var contentIcon = document.createElement("img");
+        contentIcon.src = "/svg/login/inj.svg";
+        contentIcon.classList.add("content-icon");
+        notification.appendChild(contentIcon);
+
+        document.body.appendChild(notification);
+
+        setTimeout(function () {
+          document.body.removeChild(notification);
+        }, 3000); // 3초 후에 제거
+      }
+    </script>
+  </body>
+</html>

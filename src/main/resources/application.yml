@@ -1,0 +1,22 @@
+spring:
+  sql:
+    init:
+      mode: never
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ansim
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update #  비활 -> none  생성(개발일떄 추천) -create  /updata //출시validate  <--- 바꿀것
+    properties:
+      hibernate:
+#        show_sql: true
+        format_sql: true
+
+logging.level:
+#  org.hibernate.SQL: debug
+   org.hibernate.type: trace

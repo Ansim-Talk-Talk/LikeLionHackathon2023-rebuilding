@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>안심톡톡</title>
+  <link rel="stylesheet" href="/css/login/style6.css">
+</head>
+<body onload="selectRole()">
+  <div class="container">
+    <img src="/svg/login/main.svg" alt="이미지" class="image">
+    <h2><span th:text="${member.name}"></span>님, 반갑습니다!</h2>
+  </div>
+
+  <script>
+    /*
+    function selectRole(role) {
+      localStorage.setItem('selectedRole', role);
+      setTimeout(function() {
+        window.location.href = '../pe-home/pe-home-main.html';
+      }, 2000); // 2초는 2000밀리초를 의미합니다.
+    }
+
+     */
+    function selectRole(role) {
+      localStorage.setItem('selectedRole', role);
+
+      const currentUrl = window.location.href;
+
+      const regex = /\/members\/pebohocode\/(\d+)/;
+      const match = currentUrl.match(regex);
+
+      if (match) {
+        const id = match[1];
+        console.log(id); // 추출된 id 출력
+
+        setTimeout(function() {
+          window.location.href = '/members/' + id + '/pebohomaintitle';
+        }, 3000); // 3초 후에 페이지 이동
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+body {
+  font-family: Pretendard;
+  background-color: #f5f5f5;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.left-margin-image {
+  position: absolute;
+  top: 50%;
+  right: 528px;
+  transform: translateY(-50%);
+  padding-left: 200px; /* 왼쪽 여백 추가 */
+}
+
+.top {
+  background-color: #1964f7;
+  color: #f8f8f8;
+  width: 390px;
+  height: 110px;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.image {
+  width: 99px;
+  height: 150px;
+  position: absolute;
+  left: 160px;
+  /* 원하는 위치로 조정합니다. */
+}
+
+.bot {
+  height: 80px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  /* position을 absolute로 변경 */
+  bottom: 0;
+  /* 하단에 정렬되도록 수정 */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.alram {
+  position: absolute;
+  width: 45px;
+  height: 47px;
+  margin-left: -329px;
+  margin-top: 23px;
+}
+
+.home {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-left: -235px;
+  margin-top: -10px;
+}
+
+.mypage {
+  position: absolute;
+  width: 56px;
+  height: 47px;
+  margin-top: 23px;
+  margin-left: -107px;
+}
+
+.down {
+  margin-top: 13px;
+  border-radius: 0 0 10px 10px;
+}
+
+/*채팅구역*/
+
+.ment {
+  position: relative;
+  width: 390px;
+  height: 27px;
+  flex-shrink: 0;
+  color: #202020;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 138%;
+  letter-spacing: -0.42px;
+  margin-top: 25px;
+  left: -140px;
+}
+
+.tri {
+  position: absolute;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+.chat-container {
+  padding-top: 25px;
+}
+
+.ball {
+  position: absolute;
+  top: 173px;
+  left: 24px;
+}
+
+.receive {
+  display: inline-block;
+  padding: 0 0 0 34px;
+  vertical-align: top;
+  width: 90%;
+}
+
+.receive p {
+  width: 290px;
+  height: auto;
+  color: #202020;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-family: Pretendard;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 138%; /* 23.46px */
+  letter-spacing: -0.34px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+
+  margin: 0;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.chat {
+  width: 57%;
+}
+
+.time-table {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  color: #1964f7;
+  display: block;
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+
+.time {
+  color: #747474;
+  display: block;
+  font-size: 14px;
+  margin: 8px 0 0 212px;
+}

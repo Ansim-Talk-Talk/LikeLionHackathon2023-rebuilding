@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>안심톡톡</title>
+  <link rel="stylesheet" href="/css/login/style5.css" />
+</head>
+
+<body>
+  <div class="container">
+    <form role="form"  th:object="${MemberCodeForm}" method="post"> <!--action="/members/bohocode/{id}"-->
+    <div class="div">
+      <img
+        src="/svg/login/vector.svg"
+        alt="등호"
+        class="arrow"
+        onclick="goToModePage()"
+      />
+      <h2 class="select">피보호자 모드의<br/>인증코드를 입력해주세요</h2>
+
+      <div class="name">
+        <h3>
+          <label for="input" th:for="code"></label>
+          <input type="text" th:field="*{code}" id="input" placeholder="인증코드 6자리" />
+        </h3>
+      </div>
+
+      <div class="next">
+        <h3>
+          <button type="submit" id="submit" onclick="handleButtonClick()">시작하기</button>
+        </h3>
+      </div>
+    </div>
+    <div class="image">
+      <img src="/svg/login/dark.svg" alt="이미지2" class="group2" />
+    </div>
+      </form>
+
+  </div>
+
+  <script>
+    function checkInputValue() {
+      const input = document.getElementById("input");
+      const inputValue = input.value.trim();
+
+      // Check if the input value is a 4-digit number
+      if (/^.{6}$/.test(inputValue)) {
+        if (inputValue !== "******") { //=== "2343"
+          // If the input value is "1234", set the correct style
+          input.style.color = "#1964F7";
+          input.style.border = "2px solid #1964F7";
+          document.querySelector(".name label").style.color = "#1964F7";
+          document.getElementById("submit").style.backgroundColor = "#1964F7";
+          document.getElementById("submit").style.color = "#FFFFFF";
+          document.getElementById("submit").disabled = false; // Activate the button
+        } else {
+          // If the input value is not "1234", set the incorrect style
+          input.style.color = "#FF4A4A"; // Red color for input text
+          document.querySelector(".name label").style.color = "#FF4A4A"; // Red color for label text
+          document.getElementById("submit").style.backgroundColor = "#FF4A4A"; // Red color for button background
+          document.getElementById("submit").style.color = "#FFFFFF"; // White color for button text
+          input.style.border = "2px solid #FF4A4A"; // Red color for input border
+          document.getElementById("submit").disabled = true; // Deactivate the button
+        }
+      } else {
+        // If the input value is not a 4-digit number, set the default style
+        input.style.color = "#202020"; // Default color for input text
+        document.querySelector(".name label").style.color = "#202020"; // Default color for label text
+        document.getElementById("submit").style.backgroundColor = "#efefef"; // Default color for button background
+        document.getElementById("submit").style.color = "#898989"; // Default color for button text
+        input.style.border = "2px solid #b8b8b8"; // Default color for input border
+        document.getElementById("submit").disabled = true; // Deactivate the button
+      }
+    }
+
+    // 입력칸에서 키가 떼어질 때마다 4글자 이상 입력을 막습니다.
+    document.getElementById("input").addEventListener("keyup", function () {
+      const input = document.getElementById("input");
+      const inputValue = input.value.trim();
+
+      if (inputValue.length > 6) {
+        alert("6글자까지만 입력 가능합니다.");
+        input.value = inputValue.slice(0, 6);
+        checkInputValue(); // Check input value again
+      }
+    });
+
+    document.getElementById("input").addEventListener("input", checkInputValue);
+
+    function handleButtonClick() {
+      const input = document.getElementById("input");
+      const inputValue = input.value.trim();
+
+      // If the input value is a 4-digit number and equal to "1234", proceed to the next page
+      if (/^.{6}$/.test(inputValue)) {// && inputValue === "2343"
+      // window.location.href = "boho6.html";
+        location.replace(`/members/${id}/bohomain`)
+
+      }
+    }
+
+    function goToModePage() {
+     // window.location.href = "boho4.html";
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

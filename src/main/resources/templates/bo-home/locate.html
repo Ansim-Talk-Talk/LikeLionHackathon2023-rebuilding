@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>안심톡톡</title>
+    <link rel="stylesheet" href="/css/bo-home/locate.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-margin-image">
+        <img src="/svg/bo-home/logo.svg" alt="Left Margin Image" />
+      </div>
+
+      <div class="right-margin-image">
+        <img src="/svg/bo-home/qrcode.svg" alt="right Margin Image" />
+      </div>
+
+      <img src="/svg/bo-home/download.svg" alt="download" class="download" />
+      <div class="top">
+        <div class="top-container">
+          <img src="/svg/bo-home/Group427320463.svg" alt="이미지" class="image" />
+        </div>
+      </div>
+
+      <div class="mid">
+        <div class="mid-overlay">
+          <div class="circle"></div>
+        </div>
+        <img src="/svg/bo-home/locateInformation.svg" alt="실시간정보" class="info" />
+        <div id="clock" class="now">00:00</div>
+        <div id="map" style="width: 390px; height: 655px"></div>
+      </div>
+
+      <div class="bot">
+        <img src="/svg/bo-home/Rectangle 6272 (1).svg" alt="하단바" class="down" />
+        <img
+          src="/svg/bo-home/locate.svg"
+          alt="위치확인"
+          class="where"
+          onclick="goToModePage(4)"
+        />
+        <img
+          src="/svg/bo-home/Group 427320591.svg"
+          alt="홈"
+          class="home"
+          onclick="goToModePage(5)"
+        />
+        <img
+          src="/svg/bo-home/Group 427320511.svg"
+          alt="마이페이지"
+          class="mypage"
+          onclick="goToModePage(6)"
+        />
+      </div>
+    </div>
+
+    <!-- Map Script -->
+    <!-- port 5500: appkey= 0c1e70c034c073366f845cbcce2b984a -->
+    <!-- port 5502: appkey= 699c810beb0a1f52360e82f5adfe15a4 -->
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0c1e70c034c073366f845cbcce2b984a"
+    ></script>
+    <script>
+      //위치정보 실시간 시계
+      const clock = document.querySelector("div#clock");
+
+      function getClock() {
+        const date = new Date();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const ampm = hours >= 12 ? "오후" : "오전"; // 시간이 12 이상이면 오후, 아니면 오전
+
+        const formattedHours = (hours % 12 || 12).toString().padStart(2, "0"); // 12시간 형식으로 변환
+        const formattedMinutes = minutes.toString().padStart(2, "0");
+
+        clock.innerText = `${ampm} ${formattedHours}:${formattedMinutes}`;
+      }
+
+      // 매 초마다 시간 업데이트
+      setInterval(getClock, 1000);
+
+      // 초기 로딩 시 시계 표시
+      getClock();
+    var notification;
+
+      function showNotification() {
+        // 알림창 생성
+        notification = document.createElement("div");
+
+        // Create the second <img> element for the alarm icon
+        var almIcon = document.createElement("img");
+        almIcon.src = "/svg/bo-home/alram.svg"; // Replace "path/to/alarm.svg" with the actual path to your alarm SVG file
+        almIcon.classList.add("alm-icon"); // Add a unique class for the alarm icon
+
+        // Create the first <img> element for the bell icon
+        var bellIcon = document.createElement("img");
+        bellIcon.src = "/svg/bo-home/jong.svg"; // Replace "path/to/bell.svg" with the actual path to your bell SVG file
+        bellIcon.classList.add("bell-icon"); // Add a unique class for the bell icon
+        // Create the third <img> element for the content icon
+        var contentIcon = document.createElement("img");
+        contentIcon.src = "/svg/bo-home/call.svg"; // Replace "path/to/content.svg" with the actual path to your content SVG file
+        contentIcon.classList.add("content-icon"); // Add a unique class for the content icon
+
+        // Add the images to the notification div
+        notification.appendChild(almIcon);
+        notification.appendChild(bellIcon);
+        notification.appendChild(contentIcon);
+
+        // "notification" 클래스를 추가하여 스타일 적용
+        notification.classList.add("notification");
+
+        // 알림창을 body에 추가
+        document.body.appendChild(notification);
+      }
+
+      // 버튼에 마우스가 들어왔을 때의 동작
+      function handleMouseEnter(buttonNumber) {
+        var button = document.getElementById(buttonNumber);
+        button.style.backgroundColor = "#1964F7";
+        button.style.color = "#FFFFFF";
+      }
+
+      // 버튼에서 마우스가 나갔을 때의 동작
+      function handleMouseLeave(buttonNumber) {
+        var button = document.getElementById(buttonNumber);
+        button.style.backgroundColor = "#efefef";
+        button.style.color = "#202020";
+      }
+
+      // 각 버튼을 클릭했을 때 호출될 함수
+      function handleButtonClick(buttonId) {
+        // 버튼에 따라 다른 동작을 수행하도록 설정
+        switch (buttonId) {
+          case 1:
+            window.location.href = "log.html";
+            break;
+          case 2:
+            window.location.href = "todolist.html";
+            break;
+          case 3:
+            window.location.href = "message.html";
+            break;
+          case 4:
+            window.location.href = "emoticon.html";
+            break;
+        }
+      }
+
+      function goToModePage(modeId) {
+        switch (modeId) {
+          case 1:
+            window.location.href = "log.html";
+            break;
+          case 2:
+            window.location.href = "todolist.html";
+            break;
+          case 3:
+            window.location.href = "message.html";
+            break;
+
+          case 4:
+            window.location.href = "locate.html";
+            break;
+          case 5:
+            window.location.href = "bo-home-main.html";
+            break;
+          case 6:
+            window.location.href = "mypage.html";
+            break;
+        }
+      }
+
+
+      var container = document.getElementById("map");
+      var options = {
+        center: new kakao.maps.LatLng(37.4678093, 127.039201),
+        level: 3,
+      };
+
+      var map = new kakao.maps.Map(container, options);
+
+      var marker;
+
+      function showCurrentPosition() {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+                  function (position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    var currentPosition = new kakao.maps.LatLng(lat, lng);
+
+                    if (marker) {
+                      marker.setPosition(currentPosition);
+                    } else {
+                      marker = new kakao.maps.Marker({
+                        position: currentPosition,
+                        map: map,
+                        draggable: true,
+                      });
+                    }
+
+                    map.setCenter(currentPosition);
+                  },
+                  function (error) {
+                    console.error("위치 정보를 가져오는 동안 오류 발생:", error);
+                  }
+          );
+        } else {
+          console.error("Geolocation API를 지원하지 않습니다.");
+        }
+      }
+
+      showCurrentPosition();
+
+
+    </script>
+  </body>
+</html>
